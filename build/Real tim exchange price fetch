@@ -1,0 +1,17 @@
+import ccxt
+import time
+
+def get_price(symbol):
+    exchange = ccxt.binance()  
+    ticker = exchange.fetch_ticker(symbol)
+    return ticker['last']
+
+def main():
+    symbol = 'ETH/USDT'  
+    while True:
+        price = get_price(symbol)
+        print(f'{symbol} Price: ${price}')
+        time.sleep(5)  
+
+if __name__ == "__main__":
+    main()
